@@ -24,7 +24,7 @@ Now you only need to do is to write the design for your first endpoint
 7       types: exchange_modules/.../f-ccsappdatatypes.raml
 8     types:
 9       Car:  types.Car
-10       Vin:  types.Vin
+10      Vin:  types.Vin
 11      Vins: types.Vins  
 12    documentation: 
 13    - title: Data Definition Table 
@@ -67,7 +67,7 @@ Now you only need to do is to write the design for your first endpoint
 7     uses:   
 8       types: exchange_modules/.../f-ccsappdatatypes.raml
 9     types:
-10       Car:  types.Car
+10      Car:  types.Car
 11      Vin:  types.Vin
 12      Vins: types.Vins  
 13    documentation: 
