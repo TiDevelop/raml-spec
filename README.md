@@ -72,13 +72,7 @@ documentation:
    content: !include docs/dtdCar.md
 
 /cars:
-  description: All cars
-  get:
-    description: Get VINs of all cars
-    responses:
-      200:
-        body:
-          type: Vins
+  ...
 
   /{vin}:
     ...
