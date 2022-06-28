@@ -20,7 +20,7 @@ title: D-Car
 version: v1
 mediaType: application/json
 uses:   
-  types: exchange_modules/42997a5a-ab62-4b88-a1f8-9bfb6a938199/f-ccsappdatatypes/1.0.0/f-ccsappdatatypes.raml
+  types: exchange_modules/.../f-ccsappdatatypes.raml
 types:
   Car:  types.Car
   Vin:  types.Vin
