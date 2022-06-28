@@ -56,6 +56,35 @@ documentation:
               error: "No Vehicle found for the given VIN" 
 ```
 
+```yaml
+#%RAML 1.0
+title: D-Car
+version: v1
+mediaType: application/json
+uses:   
+  types: exchange_modules/.../f-ccsappdatatypes.raml
+types:
+  Car:  types.Car
+  Vin:  types.Vin
+  Vins: types.Vins  
+documentation: 
+ - title: Data Definition Table 
+   content: !include docs/dtdCar.md
+
+/cars:
+  description: All cars
+  get:
+    description: Get VINs of all cars
+    responses:
+      200:
+        body:
+          type: Vins
+
+  /{vin}:
+    ...
+    
+```
+
 Interested? Learn more about the syntax in the [RAML 1.0 specification](https://github.com/raml-org/raml-spec/blob/master/versions/raml-10/raml-10.md) or take a look at some [examples](https://github.com/raml-org/raml-examples).
 
 ## How do I learn more?
