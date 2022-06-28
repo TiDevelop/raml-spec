@@ -15,69 +15,70 @@ All you need is an editor of your choice - we recommend either MuleSoft's [API D
 Now you only need to do is to write the design for your first endpoint
 
 ```yaml
-#%RAML 1.0
-title: D-Car
-version: v1
-mediaType: application/json
-uses:   
-  types: exchange_modules/.../f-ccsappdatatypes.raml
-types:
-  Car:  types.Car
-  Vin:  types.Vin
-  Vins: types.Vins  
-documentation: 
- - title: Data Definition Table 
-   content: !include docs/dtdCar.md
-
-/cars:
-  description: All cars
-  get:
-    description: Get VINs of all cars
-    responses:
-      200:
-        body:
-          type: Vins
-
-  /{vin}:
-    description: A specific car identified by its VIN
-    uriParameters:
-      vin:
-        type: Vin
-    put:
-      description: Update a car
-      body:
-        type: Car
-      responses:
-        404:
-          body:
-            properties:
-              error: string
-            example:
-              error: "No Vehicle found for the given VIN" 
+1     #%RAML 1.0
+2     title: D-Car
+3     description: Domain API providing static and dynamic car data
+4     version: v1
+5     mediaType: application/json
+6     uses:   
+7       types: exchange_modules/.../f-ccsappdatatypes.raml
+8     types:
+9       Car:  types.Car
+10       Vin:  types.Vin
+11      Vins: types.Vins  
+12    documentation: 
+13    - title: Data Definition Table 
+14      content: !include docs/dtdCar.md
+15
+16    /cars:
+17      description: All cars
+18      get:
+19        description: Get VINs of all cars
+20        responses:
+21          200:
+22            body:
+23              type: Vins
+24
+25      /{vin}:
+26        description: A specific car identified by its VIN
+27        uriParameters:
+28          vin:
+29          type: Vin
+30        put:
+31          description: Update a car
+32          body:
+33            type: Car
+34          responses:
+35            404:
+36              body:
+37                properties:
+38                  error: string
+39              example:
+40                error: "No Vehicle found for the given VIN" 
 ```
 
 ```yaml
-#%RAML 1.0
+1     #%RAML 1.0
 
-title: D-Car
-version: v1
-mediaType: application/json
-uses:   
-  types: exchange_modules/.../f-ccsappdatatypes.raml
-types:
-  Car:  types.Car
-  Vin:  types.Vin
-  Vins: types.Vins  
-documentation: 
- - title: Data Definition Table 
-   content: !include docs/dtdCar.md
+3     title: D-Car
+4      description: Domain API providing static and dynamic car data
+5     version: v1
+6     mediaType: application/json
+7     uses:   
+8       types: exchange_modules/.../f-ccsappdatatypes.raml
+9     types:
+10       Car:  types.Car
+11      Vin:  types.Vin
+12      Vins: types.Vins  
+13    documentation: 
+14    - title: Data Definition Table 
+15      content: !include docs/dtdCar.md
 
-/cars:
-  ...
-
-  /{vin}:
-    ...
-    
+17    /cars:
+18      ...
+19
+20      /{vin}:
+21         ...
 ```
 
 Interested? Learn more about the syntax in the [RAML 1.0 specification](https://github.com/raml-org/raml-spec/blob/master/versions/raml-10/raml-10.md) or take a look at some [examples](https://github.com/raml-org/raml-examples).
