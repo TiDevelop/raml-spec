@@ -16,20 +16,44 @@ Now you only need to do is to write the design for your first endpoint
 
 ```yaml
 #%RAML 1.0
-title: Hello world # required title
+title: D-Car
+version: v1
+mediaType: application/json
+uses:   
+  types: exchange_modules/42997a5a-ab62-4b88-a1f8-9bfb6a938199/f-ccsappdatatypes/1.0.0/f-ccsappdatatypes.raml
+types:
+  Car:  types.Car
+  Vin:  types.Vin
+  Vins: types.Vins  
+documentation: 
+ - title: Data Definition Table 
+   content: !include docs/dtdCar.md
 
-/greeting: # optional resource
-  get: # HTTP method declaration
-    responses: # declare a response
-      200: # HTTP status code
-        body: # declare content of response
-          application/json: # media type
-            # structural definition of a response (schema or type)
-            type: object
+/cars:
+  description: All cars
+  get:
+    description: Get VINs of all cars
+    responses:
+      200:
+        body:
+          type: Vins
+
+  /{vin}:
+    description: A specific car identified by its VIN
+    uriParameters:
+      vin:
+        type: Vin
+    put:
+      description: Update a car
+      body:
+        type: Car
+      responses:
+        404:
+          body:
             properties:
-              message: string
-            example: # example how a response looks like
-              message: "Hello world"
+              error: string
+            example:
+              error: "No Vehicle found for the given VIN" 
 ```
 
 Interested? Learn more about the syntax in the [RAML 1.0 specification](https://github.com/raml-org/raml-spec/blob/master/versions/raml-10/raml-10.md) or take a look at some [examples](https://github.com/raml-org/raml-examples).
