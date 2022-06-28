@@ -61,7 +61,7 @@ Now you only need to do is to write the design for your first endpoint
 1     #%RAML 1.0
 
 3     title: D-Car
-4      description: Domain API providing static and dynamic car data
+4     description: Domain API providing static and dynamic car data
 5     version: v1
 6     mediaType: application/json
 7     uses:   
